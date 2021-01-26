@@ -11,6 +11,7 @@ import Content from "./components/Content";
 
 function App() {
   const [data, setData] = useState({});
+  const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
@@ -31,7 +32,11 @@ function App() {
     <div>
       <Header />
       <Restau restau={data.restaurant} />
-      <Content categories={data.categories} />
+      <Content
+        categories={data.categories}
+        products={products}
+        setProducts={setProducts}
+      />
     </div>
   );
 }

@@ -10,7 +10,7 @@ const Restau = (props) => {
   return (
     <>
       <div className="bg-white">
-        <div class="container restau">
+        <div className="container restau">
           <div className="left">
             <h1>{restau.name}</h1>
             <p>{cat(restau.categories)}</p>

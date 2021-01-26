@@ -1,22 +1,20 @@
 import React from "react";
 import Menu from "./Menu";
+import Basket from "./Basket";
 
 const Content = (props) => {
-  const { categories } = props;
+  const { categories, products, setProducts } = props;
 
   return (
     <>
       <div className="container">
         <div className="content">
-          <Menu categories={categories} />
-          <div className="right basket">
-            <div className="bg-white cart">
-              <button>Valider mon panier</button>
-              <div className="checkout">
-                <p>Votre panier est vide..</p>
-              </div>
-            </div>
-          </div>
+          <Menu
+            categories={categories}
+            products={products}
+            setProducts={setProducts}
+          />
+          <Basket products={products} setProducts={setProducts} />
         </div>
       </div>
     </>
