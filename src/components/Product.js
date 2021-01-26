@@ -3,9 +3,9 @@ import React from "react";
 const Product = (props) => {
   const { categories, products, setProducts } = props;
 
-  function replace_decimal(decimal) {
-    return decimal.replace(".", ",");
-  }
+  //   function replace_decimal(decimal) {
+  //     return decimal.replace(".", ",");
+  //   }
 
   return (
     <>
