@@ -10,7 +10,8 @@ const Basket = (props) => {
 
   let total = 0;
   let fraisLiv = 2.5;
-  total = sousTotal + fraisLiv;
+  let taxeAlex = 3.0;
+  total = sousTotal + fraisLiv + taxeAlex;
 
   const emptyBasket = products.length === 0;
 
@@ -66,6 +67,8 @@ const Basket = (props) => {
               );
             })}
             <p>Sous - total : {sousTotal.toFixed(2)}</p>
+            <p>Frais de livraison : {fraisLiv}</p>
+            <p>Frais de service (pour Alex) : {taxeAlex}</p>
             <p>Total : {total.toFixed(2)}</p>
           </div>
         )}
