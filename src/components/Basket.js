@@ -15,10 +15,6 @@ const Basket = (props) => {
 
   const emptyBasket = products.length === 0;
 
-  //   function replace_decimal(decimal) {
-  //     return decimal.replace(".", ",");
-  //   }
-
   return (
     <div className="right basket">
       <div className="bg-white cart">
@@ -33,43 +29,66 @@ const Basket = (props) => {
           <div className="checkout">
             {products.map((product, index) => {
               return (
-                <div key={product.id}>
-                  <button
-                    onClick={() => {
-                      const newProducts = [...products];
-                      if (newProducts[index].quantity === 1) {
-                        newProducts.splice(index, 1);
-                      } else {
-                        newProducts[index].quantity--;
-                      }
-                      setProducts(newProducts);
-                    }}
-                  >
-                    -
-                  </button>
-                  {product.quantity}
-                  <button
-                    onClick={() => {
-                      const newProducts = [...products];
-                      newProducts[index].quantity++;
-                      setProducts(newProducts);
-                    }}
-                  >
-                    +
-                  </button>
-                  {product.title}
-                  <p>
-                    {/* {product.price * products[index].quantity.toFixed(2) + " €"} */}
-                    {product.price}
+                <div key={product.id} className="product-line">
+                  <div className="more-less-box">
+                    <button
+                      className="btn-basket"
+                      onClick={() => {
+                        const newProducts = [...products];
+                        if (newProducts[index].quantity === 1) {
+                          newProducts.splice(index, 1);
+                        } else {
+                          newProducts[index].quantity--;
+                        }
+                        setProducts(newProducts);
+                      }}
+                    >
+                      -
+                    </button>
+                    <p className="quantity-basket">{product.quantity}</p>
+                    <button
+                      className="btn-basket more"
+                      onClick={() => {
+                        const newProducts = [...products];
+                        newProducts[index].quantity++;
+                        setProducts(newProducts);
+                      }}
+                    >
+                      +
+                    </button>
+                    <p className="product-basket">{product.title}</p>
+                  </div>
+
+                  <p className="price-basket">
+                    {(product.price * products[index].quantity)
+                      .toFixed(2)
+                      .replace(".", ",")}{" "}
+                    €
                   </p>
-                  {/* {replace_decimal(product.price * products[index].quantity)} */}
                 </div>
               );
             })}
-            <p>Sous - total : {sousTotal.toFixed(2)}</p>
-            <p>Frais de livraison : {fraisLiv}</p>
-            <p>Frais de service (pour Alex) : {taxeAlex}</p>
-            <p>Total : {total.toFixed(2)}</p>
+            <hr></hr>
+            <div className="calcul-section">
+              <div className="subtotal-basket">
+                <p>Sous - total :</p>
+                <p> {sousTotal.toFixed(2).replace(".", ",")} €</p>
+              </div>
+              <div className="subtotal-basket">
+                <p>Frais de livraison : </p>
+                <p>{fraisLiv.toFixed(2).replace(".", ",")} €</p>
+              </div>
+              <div className="subtotal-basket">
+                <p>Frais de service (pour Alex) : </p>
+                <p>{taxeAlex.toFixed(2).replace(".", ",")} €</p>
+              </div>
+            </div>
+            <div className="total-section">
+              <div className="total-basket">
+                <p>Total : </p>
+                <p>{total.toFixed(2).replace(".", ",")} €</p>
+              </div>
+            </div>
           </div>
         )}
       </div>
